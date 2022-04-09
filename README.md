@@ -95,3 +95,8 @@ mv root_to_data/$yesterday/media/videos/*.txt root_to_data/$yesterday/media/tran
 #OPTIONAL: Produce an excel file with a summary of the transcripts
 python3 transcripts_stast.py $yesterday
 ```
+
+Finally, just run your .sh file, or locate it inside a cronjob:
+```
+./my_sh_file.sh
+```
