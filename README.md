@@ -100,3 +100,5 @@ Finally, just run your .sh file, or locate it inside a cronjob:
 ```
 ./my_sh_file.sh
 ```
+
+Code to classify the collected images, soon avaiable...
