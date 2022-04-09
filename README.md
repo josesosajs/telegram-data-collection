@@ -25,7 +25,7 @@ phone: 'my_phone'
 user: 'my_user'
 ```
 
-Remember to keep this file on the .gitignore since it contains sensible information. Alternativetly, you could use another method to store your API keys. Feel free to adapt the code.
+Remember to keep this file on the .gitignore since it contains sensible information. Alternativetly, you could use another method to store your API keys. Feel free to adapt the code as needed.
 
 
 ## Configuration
@@ -55,3 +55,7 @@ python3 get_telegram_data.py
 If you want the collection to run everyday, just add the command into a cronjob.
 
 ## Files structure
+The script is designed to run in a daily basis. Thus, it will create a folder inside the selected path for each day, e.g. ***2022-04-05***. Inside the folder you will find 4 json files: ***telegram_channels.json, telegram_messages.json, telegram_messages_media.json, and telegram_users.json***, containing the data. 
+
+The next ER diagram shows the relationship between the files.
+![Screenshot](telegram-er.png)
