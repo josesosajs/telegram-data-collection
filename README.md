@@ -12,22 +12,7 @@ Create and activate a virtual environemnt. Then, install all the required packag
 ```
 
 ## API token 
-Create a .yaml file called ***config.yaml*** to store your keys and other configuracion variables. It should have the following strcuture: 
-
-```
-root_path: 'my_path'
-channels_file: 'my_channels_list.txt'
-api_id: 'my_api_id'
-api_hash: 'my_api_hash'
-test: 'my_test'
-test_public_key: 'my_test_key'
-prod: 'my_prod'
-prod_public_key: 'my_prod_key'
-phone: 'my_phone'
-user: 'my_user'
-```
-
-Remember to keep this file on the .gitignore since it contains sensible information. Alternativetly, you could use another method to store your API keys. Feel free to adapt the code as needed.
+Modify the given ***config.yaml*** to store your keys and other configuracion variables. Remember to keep this file on the .gitignore since it contains sensible information. Alternativetly, you could use another method to store your API keys. Feel free to adapt the code as needed.
 
 
 ## Configuration
