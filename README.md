@@ -16,7 +16,7 @@ Modify the given ***config.yaml*** to store your keys and other configuracion va
 
 
 ## Configuration
-In addition you will have to provide a .txt file with a list of users id that you would like to start to get data from. Here is an example:
+In addition you will have to provide a .txt file with a list of users ids that you would like to start to get data from. We include an example file ***my_channels_list.txt***. Here is an example of the content:
 
 ```
 nocovidvaccines
