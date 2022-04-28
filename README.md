@@ -1,6 +1,6 @@
 # Multimodal Pipeline for Collection of Misinformation Data from Telegram
 
-Paper available soon...
+Paper available at: https://arxiv.org/abs/2204.12690
 
 Note: This code uses Telegram API in order to get the data. Make sure you have requested access before starting. For detailed instructions on how to request the access to the Telegram API, and how to generate the needed tokens, have a look at: https://core.telegram.org/
 
@@ -88,4 +88,4 @@ Finally, just run your .sh file, or locate it inside a cronjob:
 ./my_sh_file.sh
 ```
 
-Code to classify the collected images, soon avaiable...
+Code to classify the collected images, soon available...
