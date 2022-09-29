@@ -1,6 +1,6 @@
 # Multimodal Pipeline for Collection of Misinformation Data from Telegram
 
-Paper available at: https://arxiv.org/abs/2204.12690
+Paper available at: https://arxiv.org/abs/2204.12690 and http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.159.pdf
 
 Note: This code uses Telegram API in order to get the data. Make sure you have requested access before starting. For detailed instructions on how to request the access to the Telegram API, and how to generate the needed tokens, have a look at: https://core.telegram.org/
 
