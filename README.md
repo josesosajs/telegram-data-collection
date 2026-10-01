@@ -1,8 +1,10 @@
 # Multimodal Pipeline for Misinformation Data Collection from Telegram
 
+
 <p align="center">
-  Official implementation of our <b>LREC 2022</b> paper<br>
-  <b>Multimodal Pipeline for Collection of Misinformation Data from Telegram</b>
+  <a href="https://scholar.google.com/citations?user=R6rtktIAAAAJ&hl=en">Jose Sosa</a>
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  <a href="https://scholar.google.com/citations?user=qcnf4QsAAAAJ&hl=en">Serge Sharoff</a>
 </p>
 
 <p align="center">
