@@ -1,24 +1,102 @@
-# Multimodal Pipeline for Collection of Misinformation Data from Telegram
+# Multimodal Pipeline for Misinformation Data Collection from Telegram
 
-Paper available at: https://arxiv.org/abs/2204.12690 and http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.159.pdf
+<p align="center">
+  Official implementation of our <b>LREC 2022</b> paper<br>
+  <b>Multimodal Pipeline for Collection of Misinformation Data from Telegram</b>
+</p>
 
-Note: This code uses Telegram API in order to get the data. Make sure you have requested access before starting. For detailed instructions on how to request the access to the Telegram API, and how to generate the needed tokens, have a look at: https://core.telegram.org/
+<p align="center">
+  <a href="http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.159.pdf">
+    <img src="https://img.shields.io/badge/LREC-2022-blue.svg" alt="LREC 2022">
+  </a>
+  <a href="https://arxiv.org/abs/2204.12690">
+    <img src="https://img.shields.io/badge/arXiv-2204.12690-b31b1b.svg" alt="arXiv">
+  </a>
+</p>
 
-## Installation 
+<p align="center">
+  <a href="http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.159.pdf"><b>Paper</b></a>
+  ·
+  <a href="https://arxiv.org/abs/2204.12690"><b>arXiv</b></a>
+</p>
 
-Create and activate a virtual environemnt. Then, install all the required packages
- ```
- pip install -r /path/to/requirements.txt
+
+## 📖 Overview
+
+This repository contains the data collection pipeline presented in our **LREC 2022** paper:
+
+> **Multimodal Pipeline for Collection of Misinformation Data from Telegram**
+
+The pipeline uses the **Telegram API** to collect multimodal data from a predefined set of public Telegram channels and users. The collected data can include:
+
+- 💬 Messages and associated metadata
+- 📢 Channel information
+- 👤 User information
+- 🖼️ Images
+- 🎥 Videos
+- 📄 Documents
+- 📝 Video transcripts
+
+The pipeline is designed for **daily data collection**, enabling the construction of multimodal datasets from Telegram.
+
+## 🚀 Getting Started
+
+### 1. Telegram API Access
+
+This project uses the official Telegram API. Before running the pipeline, you need to create a Telegram application and obtain the required API credentials. Instructions are available at:
+
+👉 https://core.telegram.org/
+
+> [!IMPORTANT]
+> Never commit Telegram API credentials or other sensitive information to GitHub.
+
+
+### 2. Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/josesosajs/telegram-data-collection.git
+cd telegram-data-collection
 ```
 
-## API token 
-Modify the given ***config.yaml*** to store your keys and other configuracion variables. Remember to keep this file on the .gitignore since it contains sensible information. Alternativetly, you could use another method to store your API keys. Feel free to adapt the code as needed.
+We recommend creating a dedicated virtual environment:
 
-
-## Configuration
-In addition you will have to provide a .txt file with a list of users ids that you would like to start to get data from. We include an example file ***my_channels_list.txt***. Here is an example of the content:
-
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
 ```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+
+## 🔑 API Configuration
+
+Configure your Telegram API credentials and other parameters in:
+
+```text
+config.yaml
+```
+
+Make sure that this file is included in `.gitignore`. Alternatively, credentials can be stored using environment variables or another secrets-management solution.
+
+---
+
+## 📡 Channel Configuration
+
+The pipeline requires a `.txt` file containing the Telegram channels/users from which data should be collected. An example is provided in:
+
+```text
+my_channels_list.txt
+```
+
+The file should contain one Telegram identifier per line:
+
+```text
 nocovidvaccines
 UNVACCINATE
 OneRepublicNetwork
@@ -33,59 +111,166 @@ CampQueenKong
 unvaccinatedDOTonline
 ```
 
-## Running the code
-Note that the code is designed to run in a daily basis. When running for the first time you will get data from the day before running the script. For testing, inside your virtual environment, just simply run:
-```
+> [!NOTE]
+> These identifiers are included only as an example of the expected configuration format.
+
+
+## ▶️ Running the Pipeline
+
+Run the collection script with:
+
+```bash
 python3 get_telegram_data.py
 ```
 
-If you want the collection to run everyday, just add the command into a cronjob.
+The pipeline is designed to run **once per day**. When executed, it collects data corresponding to the previous day. For continuous data collection, the script can be scheduled using `cron` or another job scheduler.
 
-## Files structure
-The script is designed to run in a daily basis. Thus, it will create a folder inside the selected path for each day, e.g. ***2022-04-05***. Inside the folder you will find 4 json files: ***telegram_channels.json, telegram_messages.json, telegram_messages_media.json, and telegram_users.json***, containing the data. Aditionally, it will create a folder called ***media*** to store the multimodal data, i.e. images, videos, and documents.
 
-The next ER diagram shows the relationship between the files.
-![Screenshot](telegram-er.png)
+## 📂 Output Structure
 
-## Getting video transcripts
+The pipeline creates a separate directory for each collection date. For example:
 
-Aditionally to our data collection pipeline, we added a script to get transcripts from the dowloaded Telegram videos. To integrate this step to the data collection create a .sh file with the following structure:
+```text
+root_to_data/
+└── 2022-04-05/
+    ├── telegram_channels.json
+    ├── telegram_messages.json
+    ├── telegram_messages_media.json
+    ├── telegram_users.json
+    └── media/
+        ├── images/
+        ├── videos/
+        ├── documents/
+        └── transcripts/
 ```
+
+Four main JSON files are generated:
+
+| File | Description |
+|---|---|
+| `telegram_channels.json` | Metadata associated with collected Telegram channels |
+| `telegram_messages.json` | Collected Telegram messages and associated metadata |
+| `telegram_messages_media.json` | Relationships between messages and downloaded media |
+| `telegram_users.json` | Information associated with collected Telegram users |
+
+Downloaded multimodal content is stored under the `media/` directory.
+
+
+## 🔗 Data Model
+
+The following entity-relationship diagram illustrates the relationships between the generated data files:
+
+<p align="center">
+  <img src="telegram-er.png" width="800" alt="Telegram data ER diagram">
+</p>
+
+
+## 🎥 Video Transcription
+
+In addition to the Telegram data collection pipeline, this repository includes functionality for generating transcripts from downloaded Telegram videos. A complete daily workflow can combine:
+
+1. Telegram data collection
+2. Media organization
+3. Video transcription
+4. Optional transcript statistics
+
+<details>
+<summary><b>Example daily collection and transcription script</b></summary>
+
+<br>
+
+```bash
 #!/bin/bash -l
-#Get yesterday date, we will need to send this as parameter
+
+# Get yesterday's date.
 yesterday=$(date -d "yesterday 13:00" '+%Y-%m-%d')
 
-#Activate your virtual env
+# ----------------------------------------------------------
+# Activate your virtual environment
+# ----------------------------------------------------------
 
-#Run collection pipeline, this could take a while. It will depend on the number of users that you would like to get data from.
+# source /path/to/.venv/bin/activate
+
+# ----------------------------------------------------------
+# 1. Collect Telegram data
+# ----------------------------------------------------------
+
 python3 get_telegram_data.py
 
-#Create folders to organise media
-mkdir root_to_data/$yesterday/media/images
-mkdir root_to_data/$yesterday/media/videos
-mkdir root_to_data/$yesterday/media/documents
+# ----------------------------------------------------------
+# 2. Organize downloaded media
+# ----------------------------------------------------------
 
-#Moving data to corresponding folder
-mv root_to_data/$yesterday/media/*.jpg root_to_data/$yesterday/media/images
-mv root_to_data/$yesterday/media/*.mp4 root_to_data/$yesterday/media/videos
-mv root_to_data/$yesterday/media/*.pdf root_to_data/$yesterday/media/documents
+mkdir -p root_to_data/$yesterday/media/images
+mkdir -p root_to_data/$yesterday/media/videos
+mkdir -p root_to_data/$yesterday/media/documents
 
-#Run script to get transcripts
-python3 /home/home01/scjasm/data-collection/telegram/get_transcript.py $yesterday
+mv root_to_data/$yesterday/media/*.jpg \
+   root_to_data/$yesterday/media/images 2>/dev/null
 
-#Create folder for transcript
-mkdir root_to_data/$yesterday/media/transcripts
+mv root_to_data/$yesterday/media/*.mp4 \
+   root_to_data/$yesterday/media/videos 2>/dev/null
 
-#Move transcripts to corresponding folder
-mv root_to_data/$yesterday/media/videos/*.txt root_to_data/$yesterday/media/transcripts
+mv root_to_data/$yesterday/media/*.pdf \
+   root_to_data/$yesterday/media/documents 2>/dev/null
 
-#OPTIONAL: Produce an excel file with a summary of the transcripts
+# ----------------------------------------------------------
+# 3. Generate video transcripts
+# ----------------------------------------------------------
+
+python3 get_transcript.py $yesterday
+
+mkdir -p root_to_data/$yesterday/media/transcripts
+
+mv root_to_data/$yesterday/media/videos/*.txt \
+   root_to_data/$yesterday/media/transcripts 2>/dev/null
+
+# ----------------------------------------------------------
+# 4. Optional: Generate transcript statistics
+# ----------------------------------------------------------
+
 python3 transcripts_stast.py $yesterday
 ```
 
-Finally, just run your .sh file, or locate it inside a cronjob:
-```
-./my_sh_file.sh
+</details>
+
+Run the workflow with:
+
+```bash
+chmod +x my_collection_script.sh
+./my_collection_script.sh
 ```
 
-Code to classify the collected images, soon available...
+The script can also be scheduled as a daily cron job.
+
+## 📚 Citation
+
+If you use this repository or pipeline in your research, please cite our **LREC 2022** paper:
+
+```bibtex
+@inproceedings{sosa2022multimodal,
+  title={Multimodal pipeline for collection of misinformation data from telegram},
+  author={Sosa, Jose and Sharoff, Serge},
+  booktitle={Proceedings of the thirteenth language resources and evaluation conference},
+  pages={1480--1489},
+  year={2022}
+}
+```
+
+## ⚠️ Disclaimer
+
+This repository is intended for **research purposes**.
+
+Users of this code are responsible for ensuring that data collection and processing comply with:
+
+- applicable laws and regulations,
+- institutional and ethical requirements,
+- privacy and data-protection requirements, and
+- Telegram's terms of service and API policies.
+
+
+## 📝 TODO
+
+- [ ] Image classification pipeline
+- [ ] Additional documentation
+- [ ] Extended configuration examples
