@@ -16,10 +16,10 @@
   </a>
 </p>
 
-## 📝 Abstract
+## Abstract
 > *The paper presents the outcomes of AI-COVID19, our project aimed at better understanding of misinformation flow about COVID-19 across social media platforms. The specific focus of the study reported in this paper is on collecting data from Telegram groups which are active in promotion of COVID-related misinformation. Our corpus collected so far contains around 28 million words, from almost one million messages. Given that a substantial portion of misinformation flow in social media is spread via multimodal means, such as images and video, we have also developed a mechanism for utilising such channels via producing automatic transcripts for videos and automatic classification for images into such categories as memes, screenshots of posts and other kinds of images. The accuracy of the image classification pipeline is around 87%.*
 
-## 📖 Overview
+## Overview
 
 This repository contains the data collection pipeline presented in our **LREC 2022** paper:
 
@@ -37,17 +37,11 @@ The pipeline uses the **Telegram API** to collect multimodal data from a predefi
 
 The pipeline is designed for **daily data collection**, enabling the construction of multimodal datasets from Telegram.
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Telegram API Access
 
-This project uses the official Telegram API. Before running the pipeline, you need to create a Telegram application and obtain the required API credentials. Instructions are available at:
-
-👉 https://core.telegram.org/
-
-> [!IMPORTANT]
-> Never commit Telegram API credentials or other sensitive information to GitHub.
-
+This project uses the official Telegram API. Before running the pipeline, you need to obtain the required API credentials from Telegram. Instructions are available [here](https://core.telegram.org/).
 
 ### 2. Installation
 
@@ -72,7 +66,7 @@ pip install -r requirements.txt
 ```
 
 
-## 🔑 API Configuration
+## API Configuration
 
 Configure your Telegram API credentials and other parameters in:
 
@@ -84,7 +78,7 @@ Make sure that this file is included in `.gitignore`. Alternatively, credentials
 
 ---
 
-## 📡 Channel Configuration
+## Channel Configuration
 
 The pipeline requires a `.txt` file containing the Telegram channels/users from which data should be collected. An example is provided in:
 
@@ -113,7 +107,7 @@ unvaccinatedDOTonline
 > These identifiers are included only as an example of the expected configuration format.
 
 
-## ▶️ Running the Pipeline
+## Running the Pipeline
 
 Run the collection script with:
 
@@ -124,7 +118,7 @@ python3 get_telegram_data.py
 The pipeline is designed to run **once per day**. When executed, it collects data corresponding to the previous day. For continuous data collection, the script can be scheduled using `cron` or another job scheduler.
 
 
-## 📂 Output Structure
+## Output Structure
 
 The pipeline creates a separate directory for each collection date. For example:
 
@@ -154,7 +148,7 @@ Four main JSON files are generated:
 Downloaded multimodal content is stored under the `media/` directory.
 
 
-## 🔗 Data Model
+## Data Model
 
 The following entity-relationship diagram illustrates the relationships between the generated data files:
 
@@ -241,7 +235,7 @@ chmod +x my_collection_script.sh
 
 The script can also be scheduled as a daily cron job.
 
-## 📚 Citation
+## Citation
 
 If you use this repository or pipeline in your research, please cite our **LREC 2022** paper:
 
