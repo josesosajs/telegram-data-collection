@@ -1,4 +1,4 @@
-# Multimodal Pipeline for Misinformation Data Collection from Telegram
+# Multimodal Pipeline for Collection of Misinformation Data from Telegram
 
 
 <p align="center">
