@@ -157,7 +157,7 @@ The following entity-relationship diagram illustrates the relationships between 
 </p>
 
 
-## 🎥 Video Transcription
+## Video Transcription
 
 In addition to the Telegram data collection pipeline, this repository includes functionality for generating transcripts from downloaded Telegram videos. A complete daily workflow can combine:
 
