@@ -14,12 +14,6 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="http://www.lrec-conf.org/proceedings/lrec2022/pdf/2022.lrec-1.159.pdf"><b>Paper</b></a>
-  ·
-  <a href="https://arxiv.org/abs/2204.12690"><b>arXiv</b></a>
-</p>
-
 
 ## 📖 Overview
 
@@ -256,21 +250,3 @@ If you use this repository or pipeline in your research, please cite our **LREC 
   year={2022}
 }
 ```
-
-## ⚠️ Disclaimer
-
-This repository is intended for **research purposes**.
-
-Users of this code are responsible for ensuring that data collection and processing comply with:
-
-- applicable laws and regulations,
-- institutional and ethical requirements,
-- privacy and data-protection requirements, and
-- Telegram's terms of service and API policies.
-
-
-## 📝 TODO
-
-- [ ] Image classification pipeline
-- [ ] Additional documentation
-- [ ] Extended configuration examples
